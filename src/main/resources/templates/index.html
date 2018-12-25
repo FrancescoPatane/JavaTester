@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head lang="en">
+	    <meta charset="UTF-8"/>
+	    <title>JTester</title>
+	    <th:block th:insert="fragments/head :: stylesheets">css</th:block>
+	</head>
+	<body>
+	
+		<nav th:replace="fragments/navbar :: navbar">Navbar</nav>
+		
+		<footer>
+			<th:block th:insert="fragments/footer :: scripts">js</th:block>
+		</footer>
+	
+	</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <th:block th:insert="fragments/head :: stylesheets">css</th:block>
+		<link rel="stylesheet" th:href="@{/css/add-question.css}">
+
+
+</head>
+<body>
+
+		<nav th:replace="fragments/navbar :: navbar">Navbar</nav>
+
+
+<div class="container">
+
+<form id="newQstForm">
+  <div class="form-row">
+    <div class="col">
+    <label for="exam">Exam</label>
+    <input class="form-control" type="text" id="exam" name="exam" ></input>    </div>
+    <div class="col">
+    <label for="category">Category</label>
+    <input class="form-control" type="text" id="category" name="category" ></input>    </div>
+        <div class="col">
+    <br>
+        <div class="form-check float-right">
+    <input type="checkbox" class="form-check-input" id="multipleAnswers">
+    <label class="form-check-label" for="multipleAnswers">Multiple answers</label>
+  </div>
+   </div> 
+    
+  </div>
+  
+  
+  
+  <div class="form-group" >
+    <label for="question">Question Text</label>
+    <textarea class="form-control" id="question" name="question" rows="3"></textarea>
+  </div>
+  <div class="form-row">
+    <div class="col">
+    <label for="A">Answer A</label>
+    <input class="form-control" type="text" id="A" name="A" ></input>   
+     </div>
+
+    <div class="col">
+    <label for="B">Answer B</label>
+    <input class="form-control" type="text" id="B" name="B" ></input>    
+    </div>
+    
+
+
+  </div>
+  <div class="form-row">
+          <div class="col">
+    <label for="C">Answer C</label>
+    <input class="form-control" type="text" id="C" name="C" ></input>    
+    </div>
+    
+            <div class="col">
+    <label for="D">Answer D</label>
+    <input class="form-control" type="text" id="D" name="D" ></input>    
+    </div>
+  </div>
+  
+  
+    <div class="form-row">
+    <div class="col">
+    <label for="E">Answer E</label>
+    <input class="form-control" type="text" id="E" name="E" ></input>   
+     </div>
+
+    <div class="col">
+    <label for="F">Answer F</label>
+    <input class="form-control" type="text" id="F" name="F" ></input>    
+    </div>
+    
+
+
+  </div>
+  <div class="form-row">
+          <div class="col">
+    <label for="G">Answer G</label>
+    <input class="form-control" type="text" id="G" name="G" ></input>    
+    </div>
+    
+            <div class="col">
+    <label for="H">Answer H</label>
+    <input class="form-control" type="text" id="H" name="H" ></input>    
+    </div>
+  </div>
+  
+      <div class="form-group" >
+    <label for="explanation">Explanation</label>
+    <textarea class="form-control" id="explanation" name="explanation" rows="3"></textarea>
+  </div>
+  <div class="form-row" id="form-text">
+  <p>Correct Answers</p>
+  </div>
+     <div class="form-row" id="validAnswers">
+      <div class="col">
+        <input type="checkbox" class="form-check-input" id="validA" value="A">
+    <label class="form-check-label" for="validA">A</label>
+     </div>
+     <div class="col">
+            <input type="checkbox" class="form-check-input" id="validB" value="B">
+    <label class="form-check-label" for="validB">B</label>
+     </div>
+     <div class="col">
+            <input type="checkbox" class="form-check-input" id="validC" value="C">
+    <label class="form-check-label" for="validC">C</label>
+     </div>
+     <div class="col">
+            <input type="checkbox" class="form-check-input" id="validD" value="D">
+    <label class="form-check-label" for="validD">D</label>
+    </div>
+  </div>
+       <div class="form-row" id="validAnswers">
+      <div class="col">
+        <input type="checkbox" class="form-check-input" id="validE" value="E">
+    <label class="form-check-label" for="validE">E</label>
+     </div>
+     <div class="col">
+            <input type="checkbox" class="form-check-input" id="validF" value="F">
+    <label class="form-check-label" for="validF">F</label>
+     </div>
+     <div class="col">
+            <input type="checkbox" class="form-check-input" id="validG" value="G">
+    <label class="form-check-label" for="validG">G</label>
+     </div>
+     <div class="col">
+            <input type="checkbox" class="form-check-input" id="validH" value="H">
+    <label class="form-check-label" for="validH">H</label>
+    </div>
+  </div>
+  
+  <hr>
+
+    <button type="submit" class="btn btn-secondary float-right">Submit</button>
+  
+</form>
+
+</div>
+
+		<footer>
+			<th:block th:insert="fragments/footer :: scripts">js</th:block>
+			<script th:src="@{/js/add-question.js}"></script>
+		</footer>
+		
+		
+</body>
+</html>

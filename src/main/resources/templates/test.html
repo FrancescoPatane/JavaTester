@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head lang="en">
+	    <meta charset="UTF-8"/>
+	    <title>JTester</title>
+	    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}">
+	</head>
+	<body>
+	
+		<nav th:replace="fragments/navbar :: navbar">Navbar</nav>
+		
+		<div class="container">
+		
+		<fieldset>
+		    <textarea class="form-control" th:text="${question.data.question}" rows="3"></textarea>
+		
+		</fieldset>
+		
+		</div>
+		
+		
+		
+		<footer th:insert="fragments/footer :: footer">Footer</footer>
+	
+	</body>
+</html>
