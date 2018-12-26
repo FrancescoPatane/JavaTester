@@ -47,16 +47,33 @@ function setNewQuestion(){
 	var questionText = $("#question").val();
 	var explanation = $("#explanation").val();
 
-	var answers = {
-			A: $("#A").val(),
-			B: $("#B").val(),
-			C: $("#C").val(),
-			D: $("#D").val(),
-			E: $("#E").val(),
-			F: $("#F").val(),
-			G: $("#G").val(),
-			H: $("#H").val()
-	};
+	var answers = {};
+
+	
+	if ($("#A").val())
+		answers['A'] = $("#A").val();
+	
+	if ($("#B").val())
+		answers['B'] = $("#B").val();
+	
+	if ($("#C").val())
+		answers['C'] = $("#C").val();
+	
+	if ($("#D").val())
+		answers['D'] = $("#D").val();
+	
+	if ($("#E").val())
+		answers['E'] = $("#E").val();
+	
+	if ($("#F").val())
+		answers['F'] = $("#F").val();
+	
+	if ($("#G").val())
+		answers['G'] = $("#G").val();
+	
+	if ($("#H").val())
+		answers['H'] = $("#H").val();
+	
 
 	var validAnswersInput = $("#validAnswers input:checked");
 	var validAnswers = [];

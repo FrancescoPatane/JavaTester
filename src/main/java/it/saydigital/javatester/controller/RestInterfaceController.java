@@ -2,6 +2,7 @@ package it.saydigital.javatester.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,20 +18,30 @@ import it.saydigital.javatester.repository.QuestionRepository;
 
 @RestController
 public class RestInterfaceController {
-	
+
 	@Autowired 
 	private QuestionRepository questionRepo;
-	
+
+	//	@GetMapping(value = {"/questions"})
+	//	public List<Question> getAllQuestions () {
+	//		//if (exam == null && category == null)
+	//			return questionRepo.findAll();
+	//	}
+
 	@GetMapping(value = {"/questions"})
-	public List<Question> getAllQuestions () {
-		return questionRepo.findAll();
+	public List<Question> getAllQuestions (@RequestParam("exam") Optional<String> exam, @RequestParam("category") Optional<String> category) {
+		if (exam.isPresent() && category.isPresent())
+			return questionRepo.findByExamAndCategory(exam.get(), category.get());
+		else
+			return questionRepo.findAll();
+
 	}
-	
+
 	@GetMapping(value = {"/questions/{id}"})
 	public QuestionData getQuestion (@PathVariable Long id) {
 		return questionRepo.findById(id).get().getData();
 	}
-	
+
 	@PostMapping(value = { "/admin/questions" })
 	public void saveQuestion(@RequestBody Question newQuestion) {
 		questionRepo.save(newQuestion);

@@ -25,8 +25,6 @@ public class DefaultController {
 	
 	@GetMapping(value = { "/test" })
 	public String testPage(Model model) {
-		Question question = questionRepo.findById(4l).get();
-		model.addAttribute("question", question);
 		return "test";
 	}
 
