@@ -19,8 +19,8 @@
 			
 			  <div class="form-row">
     <div class="col">
-      <label for="examSelect">Exam</label> 
-					<select class="form-control" id="examSelect">
+      <label for="examSelect" >Exam</label> 
+					<select class="form-control" id="examSelect" onchange="console.log('asd')">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -95,8 +95,8 @@
 
 
 	<footer>
-		<script th:src="@{/js/react/react.min.js}"></script>
-		<script th:src="@{/js/react/react-dom.min.js}"></script>
+		<script th:src="@{/js/react/react.production.min.js}"></script>
+		<script th:src="@{/js/react/react-dom.production.min.js}"></script>
 		<script th:src="@{/js/babel/babel.min.js}"></script>
 		<script type="text/babel" th:src="@{/js/app/App.js}"></script>
 	</footer>

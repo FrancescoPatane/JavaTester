@@ -22,11 +22,15 @@ public class RestInterfaceController {
 	@Autowired 
 	private QuestionRepository questionRepo;
 
-	//	@GetMapping(value = {"/questions"})
-	//	public List<Question> getAllQuestions () {
-	//		//if (exam == null && category == null)
-	//			return questionRepo.findAll();
-	//	}
+	@GetMapping(value = {"/questions/exams"})
+	public  List<String> getExams () {
+		return questionRepo.findExams();
+	}
+	
+	@GetMapping(value = {"/questions/categories"})
+	public  List<String> getCategoriesByExam (@RequestParam("exam") String exam) {
+		return questionRepo.findCategoriesByExAM(exam);
+	}
 
 	@GetMapping(value = {"/questions"})
 	public List<Question> getAllQuestions (@RequestParam("exam") Optional<String> exam, @RequestParam("category") Optional<String> category) {
