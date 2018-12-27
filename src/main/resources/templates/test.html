@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-	<meta charset="UTF-8" />
-	<title>JTester</title>
-	<th:block th:insert="fragments/head :: stylesheets">css</th:block>
-	<link rel="stylesheet" th:href="@{/css/test.css}">
+<meta charset="UTF-8" />
+<title>JTester</title>
+<th:block th:insert="fragments/head :: stylesheets">css</th:block>
+<link rel="stylesheet" th:href="@{/css/test.css}">
 
 </head>
 <body>
@@ -16,22 +16,76 @@
 		<div id="questionPanel">
 
 			<fieldset>
+			
+			  <div class="form-row">
+    <div class="col">
+      <label for="examSelect">Exam</label> 
+					<select class="form-control" id="examSelect">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+    </div>
+    <div class="col">
+<label for="categorySelect">Category</label> <select
+						class="form-control" id="categorySelect">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>    </div>
+  </div>
 
-				<div class="form-group">
-					<textarea class="form-control" id="questio" rows="10" readonly></textarea>
-				</div>
-				
-				<div class="form-group">
-				
-				<ul>
-					<li><input type="checkbox" class="form-check-input" id="A">
-					<label class="form-check-label" for="B">Opzione A bla bla bla</label></li>
-					<li><input type="checkbox" class="form-check-input" id="A"> 
-					<label class="form-check-label" for="B">Opzione B bla bla bla</label></li>
-				</ul>
-				
-				</div>
-				
+<!-- 				<div class="form-row"> -->
+<!-- 				<div class="col"> -->
+<!-- 					<label for="examSelect">Exam</label>  -->
+<!-- 					<select class="form-control" id="examSelect"> -->
+<!-- 						<option>1</option> -->
+<!-- 						<option>2</option> -->
+<!-- 						<option>3</option> -->
+<!-- 						<option>4</option> -->
+<!-- 						<option>5</option> -->
+<!-- 					</select> -->
+<!-- 					<div class="col"> -->
+<!-- 					<label for="categorySelect">Category</label> <select -->
+<!-- 						class="form-control" id="categorySelect"> -->
+<!-- 						<option>1</option> -->
+<!-- 						<option>2</option> -->
+<!-- 						<option>3</option> -->
+<!-- 						<option>4</option> -->
+<!-- 						<option>5</option> -->
+<!-- 					</select> -->
+<!-- 					</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+
+				<!-- 				<div class="form-group"> -->
+				<!-- 					<textarea class="form-control" id="questio" rows="10" readonly></textarea> -->
+				<!-- 				</div> -->
+
+				<!-- 				<div class="form-group"> -->
+
+				<!-- 				<ul> -->
+				<!-- 					<li><input type="checkbox" class="form-check-input" id="A"> -->
+				<!-- 					<label class="form-check-label" for="B">Opzione A bla bla bla</label></li> -->
+				<!-- 					<li><input type="checkbox" class="form-check-input" id="A">  -->
+				<!-- 					<label class="form-check-label" for="B">Opzione B bla bla bla</label></li> -->
+				<!-- 				</ul> -->
+
+				<!-- 				</div> -->
+
+				<!-- 				<div class="form-group"> -->
+
+				<!-- 				<button class="btn btn-secondary" >Previous</button> -->
+				<!-- 				<button class="btn btn-secondary float-right" >Next</button> -->
+
+
+				<!-- 				</div> -->
+
 			</fieldset>
 
 		</div>
@@ -47,7 +101,7 @@
 		<script type="text/babel" th:src="@{/js/app/App.js}"></script>
 	</footer>
 
-  
+
 
 
 

@@ -1,14 +1,5 @@
 function Answer(props) {
-//	var html="<ul>";
 	var keys = Object.keys(props.map);
-//	for (var i = 0; i<keys.length; i++){
-
-
-
-//	html += "<li><input type='checkbox' className={'form-check-input'} id=" + keys[i] + "/>";
-//	html += "<label className={'form-check-label'} for=" + keys[i] + ">" + props.map.valueOf(keys[i]) + "</label></li>";
-//	}
-//	html +="</ul>";
 	return <ul>
 				{keys.map(key => (
 						<li>
@@ -17,12 +8,8 @@ function Answer(props) {
 						</li>
 				))}
 			</ul>;
-//	return  <hr/>;
-	//keys.map(key => (<hr/>));
 }
 
-//<input type='checkbox' className={'form-check-input'} id={key}/>
-//<label className={'form-check-label'} for={key}>{props.map[key]}</label> 
 
 class QuestionPanel extends React.Component {
 
@@ -32,9 +19,11 @@ class QuestionPanel extends React.Component {
 				isLoaded: false,
 				error: null,
 				questions: [],
-				currentQuestion: null
-
+				currentQuestion: null,
+				index: 0
 		};
+		this.next = this.next.bind(this);
+		this.previous = this.previous.bind(this);
 	}
 
 
@@ -46,7 +35,7 @@ class QuestionPanel extends React.Component {
 					this.setState({
 						isLoaded: true,
 						questions: result,
-						currentQuestion: result[0]
+						currentQuestion: result[this.state.index]
 					});
 				},
 				// Note: it's important to handle errors here
@@ -58,7 +47,21 @@ class QuestionPanel extends React.Component {
 						error
 					});
 				}
-		)
+		);
+	}
+	
+	next() {
+		this.setState({
+			index: this.state.index + 1,
+			currentQuestion: this.state.questions[this.state.index + 1]
+		});
+	}
+	
+	previous() {
+		this.setState({
+			index: this.state.index - 1,
+			currentQuestion: this.state.questions[this.state.index - 1]
+		});
 	}
 
 	render() {
@@ -71,42 +74,30 @@ class QuestionPanel extends React.Component {
 			return (
 					<fieldset>
 					<div className={"form-group"}>
-					<textarea className={"form-control"} rows="10" readonly>{currentQuestion.data.question}</textarea>
+					<textarea className={"form-control"} rows="10" value={currentQuestion.data.question} readonly></textarea>
 					</div>
 					<div className={"form-group"}>
-					{/*<Answer map={currentQuestion.data.answers}/>*/}
 					<Answer map={currentQuestion.data.answers} />
 					</div>
+					<hr />
+					<div className={"form-group"}>
+					<button className={"btn btn-secondary"} onClick={this.previous}>Previous</button>
+					<button className={"btn btn-secondary float-right"} onClick={this.next}>Next</button>
+					</div>
 					</fieldset>
-//					{Object.keys(currentQuestion.data.answers).map(function(object, i){
-//					return <ObjectRow obj={object} key={i} />;
-//					})}
-
-
-//					<fieldset>
-
-//					<div class="form-group">
-//					<textarea class="form-control" id="questio" rows="10"></textarea>
-//					</div>
-
-//					<div class="form-group">
-
-//					<ul>
-//					<li><input type="checkbox" class="form-check-input" id="A">
-//					<label class="form-check-label" for="B">Opzione A bla bla bla</label></li>
-//					<li><input type="checkbox" class="form-check-input" id="A"> 
-//					<label class="form-check-label" for="B">Opzione B bla bla bla</label></li>
-//					</ul>
-
-//					</div>
-
-//					</fieldset>	
 			);
 		}
 	}
 }
 
+class App extends React.Component {
+	
+	render() {
+		return <QuestionPanel />
+	}
+}
+
 ReactDOM.render(
-		<QuestionPanel />,
+		<App />,
 		document.getElementById('questionPanel')
 );
