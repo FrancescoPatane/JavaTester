@@ -1,7 +1,44 @@
+body {
+	background-color: lightgray;
+}
+
 nav {
 	margin-bottom: 3%;
 }
 
 footer {
 	margin-top: 10%;
+}
+
+.wrong-answer {
+	color: darkred;
+}
+
+.right-answer {
+	color: darkgreen;
+}
+
+ul {
+	list-style: none;
+}
+
+.form-row {
+	text-align: center;
+}
+
+fieldset {
+	color: rgba(255, 255, 255, .5);
+	background-color: #6c757d;
+	padding: 2%;
+	border-radius: 15px;
+	margin-bottom: 15px;
+	background-color: #6c757d;
+}
+
+fieldset textarea {
+	background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+fieldset label {
+	color: rgba(255, 255, 255, .5);
 }
