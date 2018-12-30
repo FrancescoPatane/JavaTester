@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head lang="en">
-	    <meta charset="UTF-8"/>
-	    <title>JTester</title>
-	    <th:block th:insert="fragments/head :: stylesheets">css</th:block>
-	</head>
-	<body>
-	
-		<nav th:replace="fragments/navbar :: navbar">Navbar</nav>
-		
-		<footer>
-			<th:block th:insert="fragments/footer :: scripts">js</th:block>
-		</footer>
-	
-	</body>
+<head lang="en">
+<meta charset="UTF-8" />
+<title>JTester</title>
+<th:block th:insert="fragments/head :: stylesheets">css</th:block>
+</head>
+<body>
+
+	<nav th:replace="fragments/navbar :: navbar">Navbar</nav>
+
+	<div class="container" id="jbckground">
+		<div class="row">
+			<div class="col-6"></div>
+			<div class="col-6">
+<!-- 				<div class="card"> -->
+<!-- 					<div class="card-body"> -->
+						<h2 class="card-title">...are you sure you know as much as
+							you think?</h2>
+						<!--     <p class="card-text">... are you sure you know as much as you think?</p> -->
+						<a class="btn btn-danger btn-lg float-right" th:href="@{/test}"
+							role="button">... Take the test!</a>
+					</div>
+				</div>
+<!-- 			</div> -->
+<!-- 		</div> -->
+	</div>
+
+	<footer>
+		<th:block th:insert="fragments/footer :: scripts">js</th:block>
+	</footer>
+</body>
 </html>
