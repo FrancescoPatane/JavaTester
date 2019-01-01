@@ -81,7 +81,7 @@ class QuestionPanel extends React.Component {
 
 
 	componentDidMount() {
-		fetch("http://localhost:8080/questions")
+		fetch("http://localhost:8080/questions?exam="+this.props.exam+"&category="+this.props.category)
 		.then(res => res.json())
 		.then(
 				(result) => {
@@ -164,6 +164,7 @@ class QuestionPanel extends React.Component {
 			if (submitted){
 				return (
 						<div>
+						<Score questions={questions} givenAnswers={givenAnswers}/>
 						{questions.map( q => (
 								<Results question={q} givenAnswers={givenAnswers}/>
 						))}
@@ -191,6 +192,31 @@ class QuestionPanel extends React.Component {
 	}
 }
 
+function Score(props) {
+	let score = 0;
+	for (let i = 0; i < props.questions.length; i++){
+		let question = props.questions[i];
+		let correctAnswers = question.data.correctAnswers;
+		let givenAnswersForQuestion = props.givenAnswers.get(question.id);
+		if (givenAnswersForQuestion && arraysEqual(correctAnswers.sort(), givenAnswersForQuestion.sort()))
+			score++;
+	};
+	let scoreString = score + '/' + props.questions.length;
+	let percentage = score*100/props.questions.length+'%';
+	return (
+			<fieldset>
+			<div className={"row"}>
+			<div className={"col"}>
+			<p>Correct answers: {scoreString}</p>
+			</div>
+			<div className={"col"}>
+			<p>{percentage}</p>
+			</div>
+			</div>
+			</fieldset>		
+	);
+}
+
 
 function arraysEqual(arr1, arr2) {
 	if(arr1.length !== arr2.length)
@@ -210,34 +236,34 @@ function Results(props) {
 	let img = null;
 	if (givenAnswers && arraysEqual(correctAnswers.sort(), givenAnswers.sort()))
 		img = <img className={"float-right"} src="/img/correct.png" height="40" width="40" />;
-	else
-		img = <img className={"float-right"} src="/img/wrong.png" height="40" width="40" />;
-	return (
-			<fieldset>
-			<div className={"row"}>
-			<div className={"col-10"}>
-			<div className={"form-group"}>
-			<textarea className={"form-control"} rows="6" value={props.question.data.question} readonly></textarea>
-			</div>
-			</div>
-			<div className={"col-2"}>
-			{img}
-			</div>
-			</div>
-			<div className={"row"}>
-			<div className={"col-4"}>
-			<div className={"form-group"}>
-			<ResultAnswers answers={answers} correctAnswers={correctAnswers} givenAnswers={givenAnswers}/>
-			</div>
-			</div>
-			<div className={"col-8"}>
-			<div className={"form-group"}>
-			<textarea className={"form-control"} rows="7" value={props.question.data.explanation} readonly></textarea>
-			</div>
-			</div>
-			</div>
-			</fieldset>		
-	);
+			else
+				img = <img className={"float-right"} src="/img/wrong.png" height="40" width="40" />;
+					return (
+							<fieldset>
+							<div className={"row"}>
+							<div className={"col-10"}>
+							<div className={"form-group"}>
+							<textarea className={"form-control"} rows="6" value={props.question.data.question} readonly></textarea>
+							</div>
+							</div>
+							<div className={"col-2"}>
+							{img}
+							</div>
+							</div>
+							<div className={"row"}>
+							<div className={"col-4"}>
+							<div className={"form-group"}>
+							<ResultAnswers answers={answers} correctAnswers={correctAnswers} givenAnswers={givenAnswers}/>
+							</div>
+							</div>
+							<div className={"col-8"}>
+							<div className={"form-group"}>
+							<textarea className={"form-control"} rows="7" value={props.question.data.explanation} readonly></textarea>
+							</div>
+							</div>
+							</div>
+							</fieldset>		
+					);
 }
 
 function ResultAnswers(props){

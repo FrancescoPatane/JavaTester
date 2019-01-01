@@ -24,9 +24,9 @@ class App extends React.Component {
 
 
 	render() {
-		const { error, isLoaded, started } = this.state;
+		const { error, isLoaded, started, exam, category } = this.state;
 		if (started)
-			return <QuestionPanel />
+			return <QuestionPanel exam={exam} category={category}/>
 		else
 			return <SelectQuiz start={this.start}/>
 	}

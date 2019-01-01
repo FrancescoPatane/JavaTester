@@ -26,14 +26,21 @@ function fire_ajax_submit() {
 		contentType: "application/json",
 		url: "/admin/questions",
 		data: JSON.stringify(newQuestion),
-		dataType: 'json',
+//		dataType: 'json',
 		cache: false,
 		timeout: 600000,
 		success: function (data) {
-
-
+			window.alert("Saved!");
+			var exam = $("#exam").val("");
+			var category = $("#category").val("");
+			var questionText = $("#question").val("");
+			var explanation = $("#explanation").val("");
+			$("input").val("");
+			$('input:checkbox').removeAttr('checked');
+			$('input:checkbox').map(i => ($('input:checkbox')[i].checked=false));
 		},
 		error: function (e) {
+			window.alert("Error, couldn't save.");
 		}
 	});
 
